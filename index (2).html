@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b2c">
+  <meta name="description" content="The professional portfolio of Tauhidul Islam, a software engineer and Computer Science and Engineering graduate.">
+  <title>Tauhidul Islam | Software Engineer</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172338;
+      --muted: #647087;
+      --navy: #101b2c;
+      --navy-soft: #1b2a40;
+      --paper: #f5f4ef;
+      --card: #fffefa;
+      --line: #e4e3dc;
+      --mint: #b7e5d2;
+      --mint-dark: #28775c;
+      --coral: #e58b6f;
+      --shadow: 0 22px 65px rgb(21 34 52 / 9%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible {
+      outline: 3px solid var(--coral);
+      outline-offset: 4px;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 5;
+      top: 0;
+      border-bottom: 1px solid rgb(255 255 255 / 10%);
+      background: rgb(16 27 44 / 96%);
+      color: #fff;
+      backdrop-filter: blur(14px);
+    }
+    .header-inner {
+      width: min(1120px, calc(100% - 40px));
+      min-height: 76px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: #fff;
+      font-size: .96rem;
+      font-weight: 750;
+      letter-spacing: -.025em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      display: grid;
+      width: 35px;
+      height: 35px;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--mint);
+      color: var(--navy);
+      font-size: .8rem;
+      font-weight: 850;
+    }
+    .tabs {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab {
+      flex: 0 0 auto;
+      padding: 9px 13px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: #b8c2d0;
+      cursor: pointer;
+      font: inherit;
+      font-size: .86rem;
+      font-weight: 600;
+      transition: background .2s ease, color .2s ease;
+    }
+    .tab:hover { color: #fff; }
+    .tab[aria-selected="true"] {
+      background: var(--mint);
+      color: var(--navy);
+    }
+
+    main {
+      width: min(1120px, calc(100% - 40px));
+      min-height: calc(100vh - 150px);
+      margin: 0 auto;
+      padding: 54px 0 80px;
+    }
+    .panel[hidden] { display: none; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 15px;
+      color: var(--mint-dark);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      width: 22px;
+      height: 2px;
+      background: var(--coral);
+      content: "";
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.15; letter-spacing: -.04em; }
+    h1 { margin-bottom: 16px; font-size: clamp(2.55rem, 6vw, 4.65rem); }
+    h2 { margin-bottom: 14px; font-size: clamp(2rem, 4vw, 3rem); }
+    h3 { margin-bottom: 8px; font-size: 1.2rem; }
+    .lead { max-width: 620px; color: var(--muted); font-size: 1.08rem; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
+      align-items: center;
+      gap: clamp(36px, 8vw, 105px);
+      min-height: 500px;
+      padding: 30px 0 50px;
+    }
+    .hero-copy { max-width: 660px; }
+    .hero-copy h1 span { color: var(--mint-dark); }
+    .hero-copy .lead { margin-bottom: 26px; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .button {
+      display: inline-flex;
+      min-height: 47px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 11px 18px;
+      border: 1px solid var(--navy);
+      border-radius: 7px;
+      background: var(--navy);
+      color: white;
+      font-size: .9rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: var(--navy-soft); }
+    .button.secondary { background: transparent; color: var(--navy); }
+    .button.secondary:hover { background: #e9eee9; }
+    .portrait-wrap {
+      position: relative;
+      width: min(100%, 340px);
+      justify-self: center;
+    }
+    .portrait-wrap::before {
+      position: absolute;
+      z-index: -1;
+      top: 19px;
+      right: -17px;
+      bottom: -17px;
+      left: 19px;
+      border: 1px solid var(--coral);
+      border-radius: 18px;
+      content: "";
+    }
+    .portrait {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 18px;
+      background: #c9d8e6;
+      object-fit: cover;
+      object-position: center 30%;
+      box-shadow: var(--shadow);
+    }
+    .portrait-note {
+      position: absolute;
+      right: -28px;
+      bottom: 23px;
+      padding: 12px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--card);
+      box-shadow: 0 10px 28px rgb(21 34 52 / 10%);
+      font-size: .82rem;
+      font-weight: 700;
+    }
+    .portrait-note span { display: block; color: var(--muted); font-size: .72rem; font-weight: 500; }
+
+    .quick-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 20px 0 44px;
+    }
+    .fact, .card, .timeline-item, .skill-group, .video-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--card);
+    }
+    .fact { padding: 20px 22px; }
+    .fact strong { display: block; margin-bottom: 3px; font-size: 1.45rem; letter-spacing: -.04em; }
+    .fact span { color: var(--muted); font-size: .86rem; }
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 48px 0 20px;
+    }
+    .section-heading h2 { margin: 0; font-size: clamp(1.7rem, 3vw, 2.2rem); }
+    .section-heading p { max-width: 420px; margin: 0; color: var(--muted); font-size: .92rem; }
+    .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .card { padding: 25px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card p { color: var(--muted); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border: 1px solid #d5e7dd;
+      border-radius: 999px;
+      background: #eff7f2;
+      color: #285d49;
+      font-size: .81rem;
+      font-weight: 650;
+    }
+    .page-intro { max-width: 700px; margin-bottom: 34px; }
+    .resume-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 30px; }
+    .resume-column h2 { margin: 0 0 18px; font-size: 1.55rem; }
+    .timeline { display: grid; gap: 13px; }
+    .timeline-item { position: relative; padding: 21px 22px 21px 25px; }
+    .timeline-item::before {
+      position: absolute;
+      top: 23px;
+      bottom: 23px;
+      left: 0;
+      width: 3px;
+      border-radius: 0 4px 4px 0;
+      background: var(--mint-dark);
+      content: "";
+    }
+    .timeline-item .meta {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--mint-dark);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .timeline-item p { margin: 0; color: var(--muted); font-size: .91rem; }
+    .contact-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 48px;
+      padding: 23px 25px;
+      border-radius: 12px;
+      background: var(--navy);
+      color: #fff;
+    }
+    .contact-strip p { margin: 3px 0 0; color: #b8c2d0; font-size: .9rem; }
+    .contact-strip a { color: var(--mint); font-weight: 700; }
+    .contact-strip .button.secondary { border-color: var(--mint); color: var(--mint); }
+    .contact-strip .button.secondary:hover { background: rgb(183 229 210 / 10%); }
+    .experience-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .skill-group { padding: 23px; }
+    .skill-group h3 { margin-bottom: 15px; }
+    .skill-group .tag-row { gap: 7px; }
+    .feature-card {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: 16px;
+      align-items: start;
+      margin-top: 24px;
+      padding: 24px;
+      border: 1px solid #d8e8de;
+      border-radius: 12px;
+      background: #edf5ef;
+    }
+    .feature-icon {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--mint);
+      font-size: 1.3rem;
+    }
+    .feature-card p { margin-bottom: 0; color: #526457; }
+    .video-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr); gap: 22px; }
+    .video-card { padding: clamp(22px, 4vw, 36px); }
+    .video-placeholder {
+      display: grid;
+      min-height: 280px;
+      margin-bottom: 22px;
+      place-items: center;
+      border-radius: 10px;
+      background:
+        radial-gradient(ellipse at 75% 20%, rgb(183 229 210 / 20%), transparent 32%),
+        linear-gradient(145deg, #1d3048, #101b2c);
+      color: #fff;
+      text-align: center;
+    }
+    .play-mark {
+      display: grid;
+      width: 65px;
+      height: 65px;
+      margin: 0 auto 13px;
+      place-items: center;
+      border: 1px solid rgb(255 255 255 / 45%);
+      border-radius: 50%;
+      color: var(--mint);
+      font-size: 1.3rem;
+    }
+    .video-placeholder strong { display: block; font-size: 1.05rem; }
+    .video-placeholder span { display: block; margin-top: 4px; color: #bbc7d3; font-size: .84rem; }
+    .script {
+      margin: 18px 0 0;
+      padding: 18px;
+      border-left: 3px solid var(--mint-dark);
+      background: #f3f5f1;
+      color: #465268;
+      font-size: .93rem;
+    }
+    .script p:last-child { margin-bottom: 0; }
+    .guide-list { margin: 13px 0 0; padding-left: 19px; color: var(--muted); font-size: .91rem; }
+    .guide-list li + li { margin-top: 8px; }
+    .privacy-note { margin: 19px 0 0; color: var(--muted); font-size: .83rem; }
+    footer {
+      padding: 22px 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+      font-size: .82rem;
+    }
+    footer a { color: var(--mint-dark); }
+
+    @media (max-width: 760px) {
+      .header-inner { width: min(100% - 24px, 1120px); min-height: auto; flex-direction: column; align-items: stretch; gap: 8px; padding: 14px 0 10px; }
+      .tabs { margin: 0 -3px; padding-bottom: 2px; }
+      .tab { padding: 8px 11px; font-size: .82rem; }
+      main { width: min(100% - 30px, 1120px); padding-top: 30px; }
+      .hero { grid-template-columns: 1fr; gap: 34px; padding-top: 18px; }
+      .portrait-wrap { width: min(78%, 290px); }
+      .portrait-note { right: -18px; }
+      .quick-facts { grid-template-columns: 1fr; gap: 9px; }
+      .fact { padding: 15px 18px; }
+      .two-column, .resume-grid, .experience-grid, .video-layout { grid-template-columns: 1fr; }
+      .section-heading { align-items: start; flex-direction: column; }
+      .contact-strip { align-items: flex-start; flex-direction: column; }
+      .video-placeholder { min-height: 220px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+    @media print {
+      .site-header, footer, .hero-actions, .contact-strip .button { display: none !important; }
+      body { background: white; }
+      main { width: 100%; padding: 0; }
+      .panel[hidden] { display: block !important; }
+      .panel { break-after: page; }
+      .card, .timeline-item, .skill-group, .video-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#about" aria-label="Tauhidul Islam, about">
+        <span class="brand-mark" aria-hidden="true">TI</span>
+        <span>Tauhidul Islam</span>
+      </a>
+      <nav class="tabs" role="tablist" aria-label="Portfolio sections">
+        <button class="tab" id="tab-about" type="button" role="tab" aria-selected="true" aria-controls="about" tabindex="0">About</button>
+        <button class="tab" id="tab-video" type="button" role="tab" aria-selected="false" aria-controls="video" tabindex="-1">Video intro</button>
+        <button class="tab" id="tab-resume" type="button" role="tab" aria-selected="false" aria-controls="resume" tabindex="-1">Resume</button>
+        <button class="tab" id="tab-experience" type="button" role="tab" aria-selected="false" aria-controls="experience" tabindex="-1">Skills &amp; experience</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" id="about" role="tabpanel" aria-labelledby="tab-about">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Software Engineer · Dhaka, Bangladesh</p>
+          <h1>Building useful things with <span>thoughtful code.</span></h1>
+          <p class="lead">I’m Tauhidul Islam, a Computer Science and Engineering graduate with a Software Engineering major and a Data Science minor. I’m interested in full-stack development and creating robust applications that solve real problems.</p>
+          <div class="hero-actions">
+            <button class="button" type="button" data-open-tab="resume">View my resume <span aria-hidden="true">↗</span></button>
+            <a class="button secondary" href="mailto:tauhidtanvir0182@gmail.com">Get in touch</a>
+          </div>
+        </div>
+        <div class="portrait-wrap">
+          <img class="portrait" src="assets/profile-photo.jpeg" alt="Professional portrait of Tauhidul Islam">
+          <div class="portrait-note">Curious by nature<span>Focused on continuous learning</span></div>
+        </div>
+      </div>
+
+      <div class="quick-facts" aria-label="Portfolio highlights">
+        <div class="fact"><strong>3.5 / 4.0</strong><span>BSc CSE CGPA</span></div>
+        <div class="fact"><strong>8th of 250</strong><span>Intra-AIUB Programming Contest</span></div>
+        <div class="fact"><strong>2026</strong><span>Software engineering internship</span></div>
+      </div>
+
+      <div class="section-heading">
+        <div><p class="eyebrow">A little about me</p><h2>Academic grounding. Practical ambition.</h2></div>
+        <p>From Naikhongchari, Bandarban, Bangladesh. Currently pursuing opportunities to grow as a junior software engineer.</p>
+      </div>
+      <div class="two-column">
+        <article class="card">
+          <h3>My direction</h3>
+          <p>My goal is to contribute to strong software teams, build reliable full-stack applications, and keep deepening my technical expertise through hands-on work and continuous learning.</p>
+        </article>
+        <article class="card">
+          <h3>What I bring</h3>
+          <p>A foundation across programming, web development, and databases, paired with experience collaborating with senior engineers on frontend, backend, and database work.</p>
+        </article>
+      </div>
+      <div class="section-heading">
+        <div><p class="eyebrow">At a glance</p><h2>Areas I work with</h2></div>
+      </div>
+      <div class="tag-row" aria-label="Core areas">
+        <span class="tag">Full-stack development</span>
+        <span class="tag">Software engineering</span>
+        <span class="tag">Web applications</span>
+        <span class="tag">Databases</span>
+        <span class="tag">Data science studies</span>
+        <span class="tag">Team collaboration</span>
+      </div>
+    </section>
+
+    <section class="panel" id="video" role="tabpanel" aria-labelledby="tab-video" hidden>
+      <div class="page-intro">
+        <p class="eyebrow">Opening statement</p>
+        <h1>Video introduction</h1>
+        <p class="lead">A short, authentic introduction to my background, work, and direction.</p>
+      </div>
+      <div class="video-layout">
+        <article class="video-card">
+          <div class="video-placeholder" role="img" aria-label="Video introduction recording has not been supplied">
+            <div><div class="play-mark" aria-hidden="true">▶</div><strong>Video recording not included</strong><span>Use the introduction script below to record a 1–2 minute video.</span></div>
+          </div>
+          <h2>Introduction script</h2>
+          <p class="privacy-note">Draft based on the details in my portfolio. Personalize it in your own voice; it is a guide, not a word-for-word requirement.</p>
+          <blockquote class="script">
+            <p>Hello, and thank you for visiting my portfolio. My name is Tauhidul Islam, and I’m from Naikhongchari in Bandarban, Bangladesh.</p>
+            <p>I have completed my Bachelor of Science in Computer Science and Engineering at American International University–Bangladesh, where I majored in Software Engineering and minored in Data Science. I graduated with a CGPA of 3.5 out of 4.0.</p>
+            <p>I’m interested in full-stack software development and building robust applications. My technical toolkit includes Python, C++, Java, C#, JavaScript and TypeScript, HTML, CSS, PHP, Bootstrap, SQL and NoSQL databases, Git, GitHub, and n8n automation. I value problem-solving, collaboration, and continued learning.</p>
+            <p>During my Software Engineer internship at BRAC IT, I contributed to e-commerce projects across frontend, backend, and database work, collaborating with senior software engineers. I also placed eighth among 250 participants in the Intra-AIUB Programming Contest.</p>
+            <p>My next step is to grow as a junior software engineer, contribute to a collaborative team, and keep developing my expertise. In the long term, I hope to help build useful, technology-driven solutions. Thank you for your time.</p>
+          </blockquote>
+        </article>
+        <aside class="video-card">
+          <h2>Recording checklist</h2>
+          <p class="lead">The introduction is designed for a clear, professional 1–2 minute recording.</p>
+          <ul class="guide-list">
+            <li>Greet viewers and say your full name and background.</li>
+            <li>Share your current professional status and latest qualification.</li>
+            <li>Mention your interests, key skills, internship, and achievement.</li>
+            <li>Close with your near-term direction and career vision.</li>
+            <li>Speak naturally; use brief notes rather than memorizing.</li>
+          </ul>
+          <p class="privacy-note">To show a recorded clip here, save it as <code>assets/video-introduction.mp4</code> and replace this placeholder with a video player.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="panel" id="resume" role="tabpanel" aria-labelledby="tab-resume" hidden>
+      <div class="page-intro">
+        <p class="eyebrow">Resume</p>
+        <h1>Education &amp; experience</h1>
+        <p class="lead">A concise overview of my academic background, industry experience, and achievement.</p>
+      </div>
+      <div class="resume-grid">
+        <div class="resume-column">
+          <h2>Experience</h2>
+          <div class="timeline">
+            <article class="timeline-item">
+              <span class="meta">March 2026 – June 2026 · Dhaka, Bangladesh</span>
+              <h3>Intern Software Engineer</h3>
+              <p><strong>BRAC IT</strong></p>
+              <p>Contributed to e-commerce website projects, working across frontend and backend development and system databases. Collaborated with senior software engineers as part of the project team.</p>
+            </article>
+          </div>
+          <h2 style="margin-top: 32px">Education</h2>
+          <div class="timeline">
+            <article class="timeline-item">
+              <span class="meta">June 2026</span>
+              <h3>Bachelor of Science in Computer Science and Engineering</h3>
+              <p>American International University–Bangladesh (AIUB)</p>
+              <p>Major: Software Engineering · Minor: Data Science<br>CGPA: 3.5 / 4.0</p>
+            </article>
+            <article class="timeline-item">
+              <span class="meta">December 2022</span>
+              <h3>Higher School Certificate</h3>
+              <p>Hazi Mohammod Mohsin College · Science · GPA: 5.0 / 5.0</p>
+            </article>
+            <article class="timeline-item">
+              <span class="meta">February 2020</span>
+              <h3>Secondary School Certificate</h3>
+              <p>Chittagong Government High School · Science · GPA: 5.0 / 5.0</p>
+            </article>
+          </div>
+        </div>
+        <aside class="resume-column">
+          <h2>Profile</h2>
+          <article class="card">
+            <h3>Career objective</h3>
+            <p>To contribute as a junior software engineer, applying full-stack development skills to build robust applications and support team success while advancing my technical expertise.</p>
+          </article>
+          <h2 style="margin-top: 28px">Technical skills</h2>
+          <article class="card">
+            <div class="tag-row">
+              <span class="tag">Python</span><span class="tag">C++</span><span class="tag">Java</span>
+              <span class="tag">C#</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span>
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">PHP</span>
+              <span class="tag">Bootstrap</span><span class="tag">SQL</span><span class="tag">NoSQL</span>
+              <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">n8n</span>
+              <span class="tag">Object-oriented programming</span>
+            </div>
+          </article>
+          <h2 style="margin-top: 28px">Award</h2>
+          <article class="timeline-item">
+            <span class="meta">April 2024</span>
+            <h3>Intra-AIUB Programming Contest</h3>
+            <p>Placed 8th among 250 participants.</p>
+          </article>
+        </aside>
+      </div>
+      <div class="contact-strip">
+        <div><strong>Interested in working together?</strong><p>Reach out by email or visit my portfolio website.</p></div>
+        <a class="button secondary" href="mailto:tauhidtanvir0182@gmail.com">Email me</a>
+      </div>
+    </section>
+
+    <section class="panel" id="experience" role="tabpanel" aria-labelledby="tab-experience" hidden>
+      <div class="page-intro">
+        <p class="eyebrow">Skills, co-curricular activities &amp; experience</p>
+        <h1>What I bring to a team</h1>
+        <p class="lead">Technical skills, applied experience, and an achievement that reflects my interest in problem-solving.</p>
+      </div>
+      <div class="experience-grid">
+        <article class="skill-group">
+          <h3>Programming</h3>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">C++</span><span class="tag">Java</span><span class="tag">C#</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span></div>
+        </article>
+        <article class="skill-group">
+          <h3>Web development</h3>
+          <div class="tag-row"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">PHP</span><span class="tag">Bootstrap</span><span class="tag">Full-stack development</span></div>
+        </article>
+        <article class="skill-group">
+          <h3>Data &amp; automation</h3>
+          <div class="tag-row"><span class="tag">SQL</span><span class="tag">NoSQL databases</span><span class="tag">n8n AI automation</span></div>
+        </article>
+        <article class="skill-group">
+          <h3>Tools &amp; practices</h3>
+          <div class="tag-row"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Object-oriented programming</span><span class="tag">Team collaboration</span></div>
+        </article>
+      </div>
+      <div class="section-heading">
+        <div><p class="eyebrow">Applied experience</p><h2>Intern Software Engineer · BRAC IT</h2></div>
+        <p>March 2026 – June 2026 · Dhaka, Bangladesh</p>
+      </div>
+      <div class="two-column">
+        <article class="card">
+          <h3>E-commerce website projects</h3>
+          <p>Contributed to software projects including e-commerce websites, with work spanning frontend, backend, and system databases.</p>
+        </article>
+        <article class="card">
+          <h3>Collaborative delivery</h3>
+          <p>Worked with senior software engineers as part of the project team, maintaining and supporting project work across the application stack.</p>
+        </article>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">↗</div>
+        <div>
+          <p class="eyebrow">Co-curricular achievement</p>
+          <h3>Intra-AIUB Programming Contest</h3>
+          <p>Ranked 8th among 250 participants · April 2024.</p>
+        </div>
+      </div>
+      <div class="section-heading">
+        <div><p class="eyebrow">Professional focus</p><h2>Where I want to grow</h2></div>
+      </div>
+      <article class="card">
+        <p>My career objective is to contribute as a junior software engineer, using full-stack development skills to build robust applications and support team success. My academic focus combines Software Engineering with a minor in Data Science.</p>
+      </article>
+      <div class="contact-strip">
+        <div><strong>Let’s connect</strong><p>Open to opportunities to learn, contribute, and grow.</p></div>
+        <a class="button secondary" href="mailto:tauhidtanvir0182@gmail.com">tauhidtanvir0182@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year">2026</span> Tauhidul Islam · <a href="mailto:tauhidtanvir0182@gmail.com">Email</a> · <a href="https://tahmid-tasin.github.io/E-Portfolio/" target="_blank" rel="noopener noreferrer">Portfolio website</a></p>
+  </footer>
+
+  <script>
+    (() => {
+      const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+      const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+
+      function activateTab(tab, updateHash = true) {
+        tabs.forEach((item) => {
+          const selected = item === tab;
+          item.setAttribute('aria-selected', String(selected));
+          item.tabIndex = selected ? 0 : -1;
+        });
+        panels.forEach((panel) => {
+          panel.hidden = panel.id !== tab.getAttribute('aria-controls');
+        });
+        if (updateHash) history.replaceState(null, '', `#${tab.getAttribute('aria-controls')}`);
+      }
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activateTab(tab));
+        tab.addEventListener('keydown', (event) => {
+          let nextIndex;
+          if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+          else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+          else if (event.key === 'Home') nextIndex = 0;
+          else if (event.key === 'End') nextIndex = tabs.length - 1;
+          else return;
+          event.preventDefault();
+          tabs[nextIndex].focus();
+          activateTab(tabs[nextIndex]);
+        });
+      });
+
+      document.querySelectorAll('[data-open-tab]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const target = tabs.find((tab) => tab.getAttribute('aria-controls') === button.dataset.openTab);
+          if (target) {
+            activateTab(target);
+            target.focus();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
+      });
+
+      const initialPanel = location.hash.slice(1);
+      const initialTab = tabs.find((tab) => tab.getAttribute('aria-controls') === initialPanel);
+      if (initialTab) activateTab(initialTab, false);
+      document.getElementById('year').textContent = String(new Date().getFullYear());
+    })();
+  </script>
+</body>
+</html>
